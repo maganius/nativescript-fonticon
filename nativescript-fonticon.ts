@@ -60,20 +60,20 @@ export class TNSFontIcon {
     };    
     
     let loadFiles = (): Promise<any> => {
-      return new Promise((resolve) => {
-        initCollection();
-        
-        if (cnt < fontIconCollections.length) {
-          loadFile(TNSFontIcon.paths[currentName]).then(() => {
-            cnt++;
-            return loadFiles().then(() => {
-              resolve()
-            });
-          });
-        } else {
-          resolve();
-        }
-      });
+       return new Promise((resolve) => {
+         initCollection();
+         
+         if (cnt < fontIconCollections.length) {
+           loadFile(TNSFontIcon.paths[currentName]).then(() => {
+             cnt++;
+             return loadFiles().then(() => {
+               resolve()
+             });
+           });
+         } else {
+           resolve();
+         }
+       });
     };
 
     return loadFiles();         
